@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 
 description 'Connection'
-version '0.1'
+version '0.9'
 
 shared_scripts {
     'shared/config.lua',
