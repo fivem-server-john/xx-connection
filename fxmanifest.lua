@@ -9,6 +9,8 @@ shared_scripts {
 }
 
 server_scripts {
+    'server/database.lua',
+    'server/queue.lua',
 	'server/main.lua',
 }
 

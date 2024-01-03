@@ -1,0 +1,9 @@
+{
+    "Lua.diagnostics.globals": [
+        "Citizen",
+        "exports",
+        "source",
+        "GetConvarInt",
+        "CancelEvent"
+    ]
+}
