@@ -1,5 +1,6 @@
 
-CORE = exports['xx-core']:GetCoreObject()
+UTILS = exports['xx-utils']:GetObject()
+
 DATABASE = DATABASE()
 QUEUE = QUEUE()
 
@@ -40,14 +41,14 @@ end
 function HandlePlayerConnection(name, setKickReason, deferrals)
     local src = source
 
-    local license = CORE.GetPlayerIdentifier(src, 'license')
+    local license = UTILS.GetPlayerIdentifierOfType(src, 'license')
 
     deferrals.defer()
     deferrals.update(Config.Translations["fetching_data"])
 
     Citizen.Wait(500)
 
-    local steam = CORE.GetPlayerIdentifier(src, 'steam')
+    local steam = UTILS.GetPlayerIdentifierOfType(src, 'steam')
     if steam.state == false then
         deferrals.update(Config.Translations["steam_not_running"])
         CancelEvent()
@@ -71,7 +72,7 @@ function HandlePlayerConnection(name, setKickReason, deferrals)
         return
     end
 
-    local license = CORE.GetPlayerIdentifier(src, 'license')
+    local license = UTILS.GetPlayerIdentifierOfType(src, 'license')
     
     local queueEntry = {
         source = src,
@@ -100,7 +101,7 @@ function GetQueuePriority(license)
 end
 
 function HandlePlayerDropped()
-    local license = CORE.GetPlayerIdentifier(source, 'license')
+    local license = UTILS.GetPlayerIdentifierOfType(source, 'license')
 
     QUEUE.RemoveFromQueue(license)
 
