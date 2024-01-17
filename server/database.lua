@@ -20,8 +20,8 @@ function DATABASE()
     end
 
     self.RegisterUser = function(source)
-        local steam = UTILS.GetPlayerIdentifier(source, 'steam')
-        local license = UTILS.GetPlayerIdentifier(source, 'license')
+        local steam = UTILS.GetPlayerIdentifierOfType(source, 'steam')
+        local license = UTILS.GetPlayerIdentifierOfType(source, 'license')
 
         exports.oxmysql:insert('INSERT INTO users (steam, license) VALUES (?,?)', { steam, license })
     end
