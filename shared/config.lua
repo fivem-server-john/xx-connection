@@ -5,6 +5,8 @@ Config = {
     RejoinTimeout = 60, -- Seconds
     RejoinPriority = 88,
 
+    InstantJoinPriority = 99,
+
     Translations = {
         ["fetching_data"] = "Fetching data...",
         ["not_whitelisted"] = "You are not whitelisted on this server",

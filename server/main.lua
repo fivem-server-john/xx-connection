@@ -26,12 +26,14 @@ function CheckQueue()
         return
     end
 
+    local nextPlayer = QUEUE.GetNextPlayer()
+    local priority = nextPlayer.priority
+
     local server_filled = PLAYER_COUNT >= MAX_PLAYER_COUNT
-    if server_filled then
+    if server_filled and not (priority >= Config.InstantJoinPriority)  then
         return
     end
 
-    local nextPlayer = QUEUE.GetNextPlayer()
     QUEUE.MakeNextPlayerJoin()
 
     PLAYER_LIST[nextPlayer.license] = true
