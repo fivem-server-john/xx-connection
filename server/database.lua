@@ -8,11 +8,11 @@ function DATABASE()
                     id INT AUTO_INCREMENT,
                     steam VARCHAR(255) NOT NULL,
                     license VARCHAR(255) NOT NULL,
+                    steamname VARCHAR(255) NOT NULL,
 
                     whitelisted BOOLEAN NOT NULL DEFAULT FALSE,
                     queue_priority INT NOT NULL DEFAULT 0,
-                    `group` VARCHAR(255) NOT NULL DEFAULT "user",
-                    
+                
                     PRIMARY KEY (`id`)
                 );
             ]]
@@ -21,9 +21,10 @@ function DATABASE()
 
     self.RegisterUser = function(source)
         local steam = UTILS.GetPlayerIdentifierOfType(source, 'steam')
+        local steamName = GetPlayerName(source)
         local license = UTILS.GetPlayerIdentifierOfType(source, 'license')
 
-        exports.oxmysql:insert('INSERT INTO users (steam, license) VALUES (?,?)', { steam, license })
+        exports.oxmysql:insert('INSERT INTO users (steam, license, steamname) VALUES (?,?,?)', { steam, license, steamName })
     end
 
     self.IsPlayerWhitelisted = function(source, license)
