@@ -13,7 +13,7 @@ Citizen.CreateThread(function()
     DATABASE.Init()
 
     while true do
-        Citizen.Wait(1000)
+        Citizen.Wait(Config.QueueCheckInterval * 1000)
 
         CheckRejoinList()
         CheckQueue()  
@@ -135,7 +135,7 @@ function CheckRejoinList()
             REJOIN_LIST[k] = nil
             Debug('Removed player from rejoin list: ' .. v.license)
         else
-            v.timeout = v.timeout - 1
+            v.timeout = v.timeout - Config.QueueCheckInterval
         end
     end
 end

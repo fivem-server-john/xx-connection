@@ -2,6 +2,8 @@ Config = {
 
     MaxQueueLength = 100,
 
+    QueueCheckInterval = 1, -- Seconds
+
     RejoinTimeout = 60, -- Seconds
     RejoinPriority = 88,
 
