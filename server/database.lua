@@ -14,7 +14,7 @@ function DATABASE()
                     queue_priority INT NOT NULL DEFAULT 0,
                 
                     PRIMARY KEY (`id`)
-                );
+                )
             ]]
         )
     end

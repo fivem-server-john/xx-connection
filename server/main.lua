@@ -53,6 +53,7 @@ function HandlePlayerConnection(name, setKickReason, deferrals)
     local steam = UTILS.GetPlayerIdentifierOfType(src, 'steam')
     if steam.state == false then
         deferrals.update(Config.Translations["steam_not_running"])
+        deferrals.done(Config.Translations["steam_not_running"])
         CancelEvent()
         return
     end
@@ -60,6 +61,7 @@ function HandlePlayerConnection(name, setKickReason, deferrals)
     local isPlayerWhitelisted = DATABASE.IsPlayerWhitelisted(src, license)
     if (not isPlayerWhitelisted) then
         deferrals.update(Config.Translations["not_whitelisted"])
+        deferrals.done(Config.Translations["not_whitelisted"])
         CancelEvent()
         return
     end
@@ -70,6 +72,7 @@ function HandlePlayerConnection(name, setKickReason, deferrals)
     local queueLength = QUEUE.GetQueueLength()
     if (queueLength >= Config.MaxQueueLength and queuePriority <= 0) then
         deferrals.update(Config.Translations["queue_is_full"])
+        deferrals.done(Config.Translations["queue_is_full"])
         CancelEvent()
         return
     end
